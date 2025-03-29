@@ -49,11 +49,14 @@ function Home() {
       toast.error("failed to fetch Users", error.message);
     }
   }
-  
-  useEffect(()=>{
-    setList(list.filter((item)=>item.id!= ID));
 
-  },[])
+useEffect(()=>{
+  setList(list.filter((item)=>item.id != ID))
+  
+},[ID])
+
+
+  
   
   // filters list based on the query in the search bar
   const filteredUsers = list.filter((item) =>
@@ -97,7 +100,7 @@ function Home() {
                   ))}
               </div>
               <div style={{display:'flex', alignItems:'center'}}>
-                <button   onClick={()=>{getUsers(pagenum+1)}} className="btn">ᐳ</button>
+                <button onClick={()=>{getUsers(pagenum+1)}} className="btn">ᐳ</button>
               </div>
             </div>
           </div>

@@ -7,7 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 const Card = ({ avatar, email, fname, lname, id, list, setList }) => {
   const { showEditModal, setShowEditModal,ID, setID } = useContext(MyContext);
 
-  // User deleting Function
   const deleteUser = async (id) => {
     try {
       const response = await fetch(`https://reqres.in/api/users/${id}`, {
@@ -16,17 +15,15 @@ const Card = ({ avatar, email, fname, lname, id, list, setList }) => {
   
       if (!response.ok) throw new Error('Failed to delete user');
   
-      console.log(`User with ID ${id} deleted successfully`);
       toast.success("User Deleted Successfully");
-      setTimeout(() => {
-      setID(id);
-        
-      }, 1500);
-      
+        setID(id);
+      // ✅ Remove the deleted user from the list
+  
     } catch (error) {
-      toast.error("error Deleting User", error.message, {position : 'top-center'});
+      toast.error("Error Deleting User: " + error.message, {position: 'top-center'});
     }
   };
+  
   
   
 
